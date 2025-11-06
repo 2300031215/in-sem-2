@@ -20,7 +20,7 @@ exports.createAppointment = async (req, res) => {
     });
   } catch (error) {
     console.error('Create appointment error:', error);
-    res.status(500).json({ message: 'Failed to create appointment', error: error.message });
+    res.status(500).json({ message: 'Failed to create appointment. Please try again.' });
   }
 };
 
@@ -30,7 +30,7 @@ exports.getAllAppointments = async (req, res) => {
     res.json(appointments);
   } catch (error) {
     console.error('Get appointments error:', error);
-    res.status(500).json({ message: 'Failed to get appointments', error: error.message });
+    res.status(500).json({ message: 'Failed to get appointments. Please try again.' });
   }
 };
 
@@ -43,7 +43,7 @@ exports.getAppointmentById = async (req, res) => {
     res.json(appointment);
   } catch (error) {
     console.error('Get appointment error:', error);
-    res.status(500).json({ message: 'Failed to get appointment', error: error.message });
+    res.status(500).json({ message: 'Failed to get appointment. Please try again.' });
   }
 };
 
@@ -53,7 +53,7 @@ exports.getUserAppointments = async (req, res) => {
     res.json(appointments);
   } catch (error) {
     console.error('Get user appointments error:', error);
-    res.status(500).json({ message: 'Failed to get appointments', error: error.message });
+    res.status(500).json({ message: 'Failed to get appointments. Please try again.' });
   }
 };
 
@@ -63,7 +63,7 @@ exports.getDoctorAppointments = async (req, res) => {
     res.json(appointments);
   } catch (error) {
     console.error('Get doctor appointments error:', error);
-    res.status(500).json({ message: 'Failed to get appointments', error: error.message });
+    res.status(500).json({ message: 'Failed to get appointments. Please try again.' });
   }
 };
 
@@ -85,7 +85,7 @@ exports.updateAppointment = async (req, res) => {
     res.json({ message: 'Appointment updated successfully' });
   } catch (error) {
     console.error('Update appointment error:', error);
-    res.status(500).json({ message: 'Failed to update appointment', error: error.message });
+    res.status(500).json({ message: 'Failed to update appointment. Please try again.' });
   }
 };
 
@@ -102,7 +102,7 @@ exports.updateAppointmentStatus = async (req, res) => {
     res.json({ message: 'Appointment status updated successfully' });
   } catch (error) {
     console.error('Update appointment status error:', error);
-    res.status(500).json({ message: 'Failed to update appointment status', error: error.message });
+    res.status(500).json({ message: 'Failed to update appointment status. Please try again.' });
   }
 };
 
@@ -117,6 +117,6 @@ exports.deleteAppointment = async (req, res) => {
     res.json({ message: 'Appointment deleted successfully' });
   } catch (error) {
     console.error('Delete appointment error:', error);
-    res.status(500).json({ message: 'Failed to delete appointment', error: error.message });
+    res.status(500).json({ message: 'Failed to delete appointment. Please try again.' });
   }
 };

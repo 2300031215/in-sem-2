@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
     });
   } catch (error) {
     console.error('Register error:', error);
-    res.status(500).json({ message: 'Registration failed', error: error.message });
+    res.status(500).json({ message: 'Registration failed. Please try again.' });
   }
 };
 
@@ -50,9 +50,14 @@ exports.login = async (req, res) => {
     }
 
     // Generate token
+    if (!process.env.JWT_SECRET) {
+      console.error('FATAL: JWT_SECRET is not configured');
+      return res.status(500).json({ message: 'Server configuration error' });
+    }
+
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
-      process.env.JWT_SECRET || 'your_jwt_secret_key_here',
+      process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
 
@@ -68,7 +73,7 @@ exports.login = async (req, res) => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ message: 'Login failed', error: error.message });
+    res.status(500).json({ message: 'Login failed. Please try again.' });
   }
 };
 
@@ -81,6 +86,6 @@ exports.getProfile = async (req, res) => {
     res.json(user);
   } catch (error) {
     console.error('Get profile error:', error);
-    res.status(500).json({ message: 'Failed to get profile', error: error.message });
+    res.status(500).json({ message: 'Failed to get profile. Please try again.' });
   }
 };

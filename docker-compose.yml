@@ -34,7 +34,9 @@ services:
       DB_NAME: medical_appointment_db
       DB_PORT: 3306
       PORT: 5000
-      JWT_SECRET: your_jwt_secret_key_here_change_in_production
+      # SECURITY: Change this to a strong random secret in production
+      # Generate with: openssl rand -base64 32
+      JWT_SECRET: ${JWT_SECRET:-medical_appointment_demo_secret_change_in_production}
     ports:
       - "5000:5000"
     depends_on:

@@ -18,7 +18,7 @@ exports.createDoctor = async (req, res) => {
     });
   } catch (error) {
     console.error('Create doctor error:', error);
-    res.status(500).json({ message: 'Failed to create doctor', error: error.message });
+    res.status(500).json({ message: 'Failed to create doctor. Please try again.' });
   }
 };
 
@@ -28,7 +28,7 @@ exports.getAllDoctors = async (req, res) => {
     res.json(doctors);
   } catch (error) {
     console.error('Get doctors error:', error);
-    res.status(500).json({ message: 'Failed to get doctors', error: error.message });
+    res.status(500).json({ message: 'Failed to get doctors. Please try again.' });
   }
 };
 
@@ -41,7 +41,7 @@ exports.getDoctorById = async (req, res) => {
     res.json(doctor);
   } catch (error) {
     console.error('Get doctor error:', error);
-    res.status(500).json({ message: 'Failed to get doctor', error: error.message });
+    res.status(500).json({ message: 'Failed to get doctor. Please try again.' });
   }
 };
 
@@ -51,7 +51,7 @@ exports.getDoctorsBySpecialization = async (req, res) => {
     res.json(doctors);
   } catch (error) {
     console.error('Get doctors by specialization error:', error);
-    res.status(500).json({ message: 'Failed to get doctors', error: error.message });
+    res.status(500).json({ message: 'Failed to get doctors. Please try again.' });
   }
 };
 
@@ -74,7 +74,7 @@ exports.updateDoctor = async (req, res) => {
     res.json({ message: 'Doctor updated successfully' });
   } catch (error) {
     console.error('Update doctor error:', error);
-    res.status(500).json({ message: 'Failed to update doctor', error: error.message });
+    res.status(500).json({ message: 'Failed to update doctor. Please try again.' });
   }
 };
 
@@ -89,6 +89,6 @@ exports.deleteDoctor = async (req, res) => {
     res.json({ message: 'Doctor deleted successfully' });
   } catch (error) {
     console.error('Delete doctor error:', error);
-    res.status(500).json({ message: 'Failed to delete doctor', error: error.message });
+    res.status(500).json({ message: 'Failed to delete doctor. Please try again.' });
   }
 };

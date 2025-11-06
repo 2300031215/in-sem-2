@@ -51,15 +51,16 @@ echo ""
 
 # Test 6: Create Appointment (requires auth)
 echo "6. Testing Create Appointment (authenticated)..."
+TOMORROW_DATE=$(date -d "+1 day" +%Y-%m-%d 2>/dev/null || date -v +1d +%Y-%m-%d 2>/dev/null || echo "2024-12-15")
 APPOINTMENT_RESPONSE=$(curl -s -X POST ${API_URL}/appointments \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TOKEN" \
-  -d '{
-    "doctor_id": 1,
-    "appointment_date": "2024-12-15",
-    "appointment_time": "10:00:00",
-    "reason": "Regular checkup"
-  }')
+  -d "{
+    \"doctor_id\": 1,
+    \"appointment_date\": \"${TOMORROW_DATE}\",
+    \"appointment_time\": \"10:00:00\",
+    \"reason\": \"Regular checkup\"
+  }")
 echo "Response: $APPOINTMENT_RESPONSE"
 echo ""
 
